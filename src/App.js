@@ -17,20 +17,16 @@ const getEmails = async (params) => {
   }
 }
 function App() {
+  const [to, setTo] = useState([])
   const [cc, setCc] = useState(["aaron.grady@beier.com", "abbigail.beatty@hotmail.com"])
-  const handleOnChange = (emails) => console.log(emails)
   
-
+  console.log("to: ", to)
+  console.log("cc: ", cc)
+  
   return (
     <div className="App">
-      <div className="Grid">
-          <span>to: </span>
-        <AutoComplete onChange={handleOnChange} value={[]} fetch={getEmails}/>
-          <span>cc: </span>
-          <AutoComplete onChange={setCc} value={cc} fetch={getEmails}/>
-        {/*   <span>cco: </span>
-          <AutoComplete onChange={getEmails} value={[]} /> */}
-      </div>
+      <AutoComplete onChange={setTo} value={[]} fetch={getEmails}/>
+      <AutoComplete onChange={setCc} value={cc} fetch={getEmails}/>
     </div>
   );
 }
